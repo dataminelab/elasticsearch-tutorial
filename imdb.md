@@ -310,6 +310,9 @@ GET /imdb/default/_search
 * find all "Lord of the Ring" movies using prefix query
 * find all documents with "Lord of the Ring" multi match
   boost title and originalTitle * 3, and storyline * 1
+* Which hotels have swimming pools and cost less than X per night?
+
+# see blogs.md
 
 ## Aggregations
 

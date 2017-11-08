@@ -258,8 +258,6 @@ POST hotels/default/1
 ## Next step
 Look into `imdb.md`
 
-## Task:
-* Which hotels have swimming pools and cost less than X per night?
 
 ## Sorting and pagination
 
