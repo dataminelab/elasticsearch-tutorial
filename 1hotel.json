@@ -1,0 +1,20 @@
+{
+  "name": "Conrad Seoul",
+  "stars": 5,
+  "rooms": 434,
+  "location": {
+    "lat": 37.525308,
+    "lon": 126.926644
+  },
+  "city": "Seoul",
+  "address": "10, Gukjegeumyung-ro, Yeongdeungpo-gu Seoul Seoul 150-945 South Korea",
+  "price": 380,
+  "internet": true,
+  "service": [
+    "Health Club",
+    "Spa",
+    "Valet parking",
+    "Wedding"
+  ],
+  "checkin": "2014-02-19T11:00:00"
+}
