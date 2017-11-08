@@ -130,7 +130,7 @@ PUT my_index/_mapping/my_type
 ```
 
 
-## Task:
+## Task (if we will have time)
 
 Add custom analyzer to the IMDB mapping and reindex the data.
 
@@ -414,15 +414,4 @@ See:
 
 
 
-TODO:
-See IMDB analyze examples:
-https://gist.github.com/jsvd/cafccdcf20bd30969ed8419c8ae9a573
-
-Add GEO search example for hotels index
-
-Review:
-https://www.elastic.co/guide/en/kibana/current/xpack-profiler.html
-
-Reindexing:
-https://stackoverflow.com/questions/13851044/is-there-a-smarter-way-to-reindex-elasticsearch/17446500#17446500
 
