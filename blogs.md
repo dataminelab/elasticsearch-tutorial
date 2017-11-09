@@ -107,5 +107,6 @@ GET /blogs/default/_search
 * Return only the title and add highligting to it
 
 
-References:
+## References
+
 * Data source: https://www.sitepoint.com/wordpress-json-example/
