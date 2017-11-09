@@ -211,14 +211,30 @@ PUT hotels/
   "mappings" : {
     "default" : {
       "properties" : {
-        "name" : { "type" : "text" },
-        "stars" : { "type" : "text" },
-        "rooms" : { "type" : "text" },
+        "name": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+        "stars" : { "type" : "byte" },
+        "rooms" : { "type" : "short" },
         "location" : { "type" : "geo_point" },
-        "city" : { "type" : "text" },
-        "address" : { "type" : "text" },
+        "city" : { "type" : "keyword" },
+        "address": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
         "internet" : { "type" : "boolean" },
-        "service" : { "type" : "text" },
+        "service" : { "type" : "keyword" },
         "checkin": { "type" : "date", "format" : "dateOptionalTime"}
       }
     }
@@ -255,9 +271,28 @@ POST hotels/default/1
 }
 ```
 
-## Next step
-Look into `imdb.md`
-
+## Geo query
+```
+GET /hotels/default/_search
+{
+    "query": {
+        "bool" : {
+            "must" : {
+                "match_all" : {}
+            },
+            "filter" : {
+                "geo_distance" : {
+                    "distance" : "2km",
+                    "location" : {
+                        "lat" : 37.556035,
+                        "lon" : 127.005232
+                    }
+                }
+            }
+        }
+    }
+}
+```
 
 ## Sorting and pagination
 

@@ -248,7 +248,6 @@ GET /imdb/default/_search
 }
 
 # Filtering
-
 GET /imdb/default/_search
 {
     "query": {
@@ -304,6 +303,104 @@ GET /imdb/default/_search
     }
 }
 
+```
+
+## More like this query
+
+```
+# Using text as a template
+GET /imdb/default/_search
+{
+    "_source": "originalTitle", 
+    "query": {
+        "more_like_this" : {
+            "fields" : ["originalTitle"],
+            "like" : ["The Godfather"],
+            "min_term_freq" : 1,
+            "min_doc_freq": 1,
+            "minimum_should_match": "10%"
+        }
+    }
+}
+
+# Using existing document as a tempalte
+GET /imdb/default/_search
+{
+    "_source": "originalTitle", 
+    "query": {
+        "more_like_this" : {
+            "fields" : ["originalTitle"],
+            "like" : [
+              {
+                  "_index" : "imdb",
+                  "_type" : "default",
+                  "_id" : "AV-iApAKI7QD-2E8QIsO"
+              }
+            ],
+            "min_term_freq" : 1,
+            "min_doc_freq": 1,
+            "minimum_should_match": "10%"
+        }
+    }
+}
+```
+
+## Suggesters
+```
+# Term suggester
+POST imdb/_search
+{
+  "suggest": {
+    "my-suggestion" : {
+      "text" : "godfater",
+      "term" : {
+        "field" : "originalTitle"
+      }
+    }
+  }
+}
+
+# see for more info:
+https://www.elastic.co/guide/en/elasticsearch/reference/current/search-suggesters-term.html
+
+# It requires some changes in the mapping
+DELETE imdb
+PUT imdb/
+{
+  "mappings": {
+    "default": {
+      "properties": {
+        "originalTitle": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            },
+            "suggest": {
+              "type": "completion"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+# Reimport the data
+# Movie suggest query
+POST imdb/_search
+{
+    "_source": "originalTitle", 
+    "suggest": {
+        "movie-suggest" : {
+            "prefix" : "The G", 
+            "completion" : { 
+                "field" : "originalTitle.suggest" 
+            }
+        }
+    }
+}
 ```
 
 ## Tasks: 
