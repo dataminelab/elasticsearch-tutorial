@@ -679,6 +679,30 @@ GET /blogs/default/_search
 }
 ```
 
+Geo query
+```
+GET /hotels/default/_search
+{
+    "query": {
+        "bool" : {
+            "must" : {
+                "match_all" : {}
+            },
+            "filter" : {
+                "geo_distance" : {
+                    "distance" : "2km",
+                    "location" : {
+                        "lat" : 37.556035,
+                        "lon" : 127.005232
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+
 ## How many movies there were before 1990, 1990-2000, 2000+
 
 ```
