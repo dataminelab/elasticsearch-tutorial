@@ -271,28 +271,9 @@ POST hotels/default/1
 }
 ```
 
-## Geo query
-```
-GET /hotels/default/_search
-{
-    "query": {
-        "bool" : {
-            "must" : {
-                "match_all" : {}
-            },
-            "filter" : {
-                "geo_distance" : {
-                    "distance" : "2km",
-                    "location" : {
-                        "lat" : 37.556035,
-                        "lon" : 127.005232
-                    }
-                }
-            }
-        }
-    }
-}
-```
+## Task - Geo query
+Find all hotels in 2 km radius from the
+point: 37.556035, 127.005232
 
 ## Sorting and pagination
 

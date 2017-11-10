@@ -130,9 +130,9 @@ PUT my_index/_mapping/my_type
 ```
 
 
-## Task (if we will have time)
+## Task
 
-Add custom analyzer to the IMDB mapping and reindex the data.
+Add custom analyzer to the IMDB mapping and reimport the data.
 
 Extract length of the movie (in minutes) from the duration field.
 
