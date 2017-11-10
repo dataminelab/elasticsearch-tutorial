@@ -51,6 +51,8 @@ wget https://artifacts.elastic.co/downloads/beats/beats-dashboards/beats-dashboa
 # import the data
 # Replace /var/logs/nginx_logs/nginx_logs to absolute path to
 # https://github.com/dataminelab/elasticsearch-tutorial/blob/master/data/nginx_logs/nginx_logs
+# download sample nginx logs data
+wget https://github.com/dataminelab/elasticsearch-tutorial/blob/master/data/nginx_logs/nginx_logs
 ./filebeat -e --modules=nginx -M "nginx.access.var.paths=[/Users/radek/src/d/elasticsearch-tutorial/data/nginx_logs/nginx_logs]"
 
 # Verify that it worked
