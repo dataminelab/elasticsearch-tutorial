@@ -440,10 +440,12 @@ GET /imdb/default/_search
     "size" : 0,
     "aggs" : {
         "genres" : {
-            "terms" : { "field" : "genres" },
-            "missing" : "N/A",
-            "min_doc_count" : 0,
-            "size" : 5
+            "terms" : { 
+              "field" : "genres",
+              "missing" : "N/A",
+              "min_doc_count" : 0,
+              "size" : 5
+            }
         }
     }
 }

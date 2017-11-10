@@ -85,7 +85,7 @@
         "href": "https://www.sitepoint.com/wp-json/wp/v2/media?parent=161113"
       }
     ],
-    "wp:term": [
+    "wp_term": [
       {
         "taxonomy": "category",
         "embeddable": true,
