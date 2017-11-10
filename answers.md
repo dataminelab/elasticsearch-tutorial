@@ -739,7 +739,7 @@ POST /imdb/default/_search?size=0
 }
 ```
 
-## Create a date-histogram of movies by their dates (10 years buckets)
+## Create a date-histogram of movies by their dates (1 year buckets)
 ```
 POST /imdb/default/_search?size=0
 {
@@ -747,7 +747,7 @@ POST /imdb/default/_search?size=0
         "movies_over_time" : {
             "date_histogram" : {
                 "field" : "year",
-                "interval" : "87600h"
+                "interval" : "year"
             }
         }
     }
