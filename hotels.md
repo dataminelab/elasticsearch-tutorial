@@ -274,6 +274,7 @@ POST hotels/default/1
 ## Task - Geo query
 Find all hotels in 2 km radius from the
 point: 37.556035, 127.005232
+(latitude, longitude)
 
 ## Sorting and pagination
 
