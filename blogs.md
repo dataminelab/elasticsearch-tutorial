@@ -102,6 +102,7 @@ GET /blogs/default/_search
 ```
 
 ## Task: Fuzzy search
+
 * Find blogs with titles containing word "undersstanding"
 * Assume user did the mistake typing the keyword
 * Return only the title and add highligting to it
