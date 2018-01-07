@@ -31,6 +31,29 @@ GET /_search
 }
 ```
 
+## Proximity search
+
+```
+GET /blogs/default/_search
+{
+    "_source": ["content.rendered"],
+    "query": {
+        "match_phrase" : {
+            "content.rendered" : {
+                "query" : "user experience",
+                "slop" : 1
+            }
+        }
+    }
+}
+```
+
+## Task: Fuzzy search
+
+* Find blogs with titles containing word "undersstanding"
+* Assume user did the mistake typing the keyword
+* Return only the title and add highligting to it
+
 First see this example:
 ```
 PUT my_index
@@ -83,29 +106,6 @@ GET my_index/_search
 
 * Create nested mapping for _links => wp_term
 * Find documents which have taxonomy equal "category" and are not embeddable (false)
-
-## Proximity search
-
-```
-GET /blogs/default/_search
-{
-    "_source": ["content.rendered"],
-    "query": {
-        "match_phrase" : {
-            "content.rendered" : {
-                "query" : "user experience",
-                "slop" : 1
-            }
-        }
-    }
-}
-```
-
-## Task: Fuzzy search
-
-* Find blogs with titles containing word "undersstanding"
-* Assume user did the mistake typing the keyword
-* Return only the title and add highligting to it
 
 
 ## References
