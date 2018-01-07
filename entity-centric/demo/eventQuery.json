@@ -1,0 +1,20 @@
+{
+	"query": {
+		"bool": {
+			"mustNot": [{
+				"term": {
+					"rating": 0
+				}
+			}]
+		}
+	},
+	"sort": [{
+		"reviewerId": {
+			"order": "asc"
+		}
+	}, {
+		"date": {
+			"order": "asc"
+		}
+	}]
+}
