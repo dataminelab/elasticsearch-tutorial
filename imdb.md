@@ -266,7 +266,7 @@ POST imdb/default/_search
 {
   "query": {
     "match": {
-      "actors": "Ellen Grace Philpotts-Page"
+      "actors": "Michael Lee Aday"
     }
   }
 }
@@ -289,7 +289,7 @@ POST imdb/default/_search?explain
 
 ## Term query
 ```
-GET index/default/_search
+GET imdb/default/_search
 {
   "query": {
     "term" : { "actors.keyword" : "Uma Thurman" } 
@@ -309,7 +309,7 @@ GET /imdb/default/_search
     "query": {
         "constant_score" : {
             "filter" : {
-                "terms" : { "actors" : ["Uma Thurman", "John Travolta"]}
+                "terms" : { "actors.keyword" : ["Uma Thurman", "John Travolta"]}
             }
         }
     }
@@ -367,7 +367,7 @@ GET /imdb/default/_search
 GET /imdb/default/_search
 {
     "query": {
-        "wildcard" : { "actors" : "T* Hanks" }
+        "wildcard" : { "actors.keyword" : "T* Hanks" }
     }
 }
 
@@ -394,15 +394,15 @@ GET /imdb/default/_search
 # Using existing document as a tempalte
 GET /imdb/default/_search
 {
-    "_source": "originalTitle", 
+    "_source": "title", 
     "query": {
         "more_like_this" : {
-            "fields" : ["originalTitle"],
+            "fields" : ["title"],
             "like" : [
               {
                   "_index" : "imdb",
                   "_type" : "default",
-                  "_id" : "AV-iApAKI7QD-2E8QIsO"
+                  "_id" : "AWDWO6XOiJp4Dnk9LZmq"
               }
             ],
             "min_term_freq" : 1,
@@ -509,7 +509,7 @@ GET /imdb/default/_search
     "aggs" : {
         "genres" : {
             "terms" : { 
-              "field" : "genres",
+              "field" : "genres.keyword",
               "missing" : "N/A",
               "min_doc_count" : 0,
               "size" : 5
@@ -533,7 +533,7 @@ GET /imdb/default/_search
   },
   "aggs": {
     "genres_terms": {
-      "terms": { "field": "genres" },
+      "terms": { "field": "genres.keyword" },
       "aggs": {
         "genres_stats": {
           "stats": { "field": "ratings" }
@@ -545,8 +545,8 @@ GET /imdb/default/_search
 ```
 
 Notes:
-* doc_count_error_upper_bound: an upper bound of the error on the document counts for each term
-* sum_other_doc_count: when there are lots of unique terms, elasticsearch only returns the top terms; this number is the sum of the document counts for all buckets that are not part of the response
+* `doc_count_error_upper_bound`: an upper bound of the error on the document counts for each term
+* `sum_other_doc_count`: when there are lots of unique terms, elasticsearch only returns the top terms; this number is the sum of the document counts for all buckets that are not part of the response
 
 ## Filter aggregation
 

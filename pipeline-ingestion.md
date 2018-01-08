@@ -255,7 +255,7 @@ PUT _ingest/pipeline/parse_nyc_csv
 Index the data using both the pipeline and the bulk API:
 
 ```
-curl -H "Content-Type: application/json" -XPOST "http://localhost:9200/subway_info_v2/station/_bulk?pipeline=parse_nyc_csv&pretty" --data-binary "@nyc-100.json"
+curl -H "Content-Type: application/json" -XPOST "http://localhost:9200/subway_info_v2/station/_bulk?pipeline=parse_nyc_csv&pretty" --data-binary "@data/nyc-100.json"
 ```
 
 Check that data was correctly imported:

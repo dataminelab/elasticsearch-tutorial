@@ -162,7 +162,10 @@ POST products/_search
  }
 ```
 
-Rescoring example:
+Rescoring example
+
+The relative importance of the original query and of the rescore query can be controlled with the query_weight and rescore_query_weight. Both default to 1.
+
 ```
 POST products/_search
  {
