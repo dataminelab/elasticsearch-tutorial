@@ -32,6 +32,73 @@ POST _analyze
 }
 ```
 
+## Diactritics
+
+```
+DELETE my_index
+
+PUT /my_index
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "folding": {
+          "tokenizer": "standard",
+          "filter":  [ "lowercase", "asciifolding" ]
+        }
+      }
+    }
+  }
+}
+
+POST /my_index/_analyze
+{
+  "analyzer": "folding",
+  "text": "My œsophagus caused a débâcle"
+}
+
+## To retain original text for the search consider storing it twice
+
+DELETE /my_index
+PUT /my_index/_mapping/my_type
+{
+  "properties": {
+    "title": { 
+      "type":           "text",
+      "analyzer":       "standard",
+      "fields": {
+        "folded": { 
+          "type":       "text",
+          "analyzer":   "folding"
+        }
+      }
+    }
+  }
+}
+
+# title will contain the original text
+# title.folded will have diactritics removed
+
+PUT /my_index/my_type/1
+{ "title": "Esta loca!" }
+
+PUT /my_index/my_type/2
+{ "title": "Está loca!" }
+
+GET /my_index/_search
+{
+  "query": {
+    "multi_match": {
+      "type":     "most_fields",
+      "query":    "esta loca",
+      "fields": [ "title", "title.folded" ]
+    }
+  }
+}
+```
+
+Alternative is to use `preserve_original` from `asciifolding` filter, but storing it separately is a cleaner solution.
+
 ## Tokenizers
 
 See: https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenizers.html
@@ -57,6 +124,7 @@ POST _analyze
 
 ## Sample analyzer
 ```
+DELETE /my_index
 PUT /my_index
 {
   "settings": {
