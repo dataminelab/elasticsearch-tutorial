@@ -315,18 +315,6 @@ GET /imdb/default/_search
     }
 }
 
-# Filtering
-GET /imdb/default/_search
-{
-    "query": {
-        "constant_score" : {
-            "filter" : {
-                "terms" : { "actors.keyword" : ["Uma Thurman", "John Travolta"]}
-            }
-        }
-    }
-}
-
 # Range queries
 GET /imdb/default/_search
 {

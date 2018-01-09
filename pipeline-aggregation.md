@@ -24,7 +24,7 @@ PUT /weather-data
 
 Import sample data:
 ```
-curl -XPOST 'http://localhost:9200/weather_data/_bulk' --data-binary @weather-data.json
+curl -XPOST 'http://localhost:9200/weather_data/_bulk' --data-binary @data/weather-data.json
 ```
 
 Average Bucket Aggregation (sibling aggregation):
@@ -116,7 +116,7 @@ PUT /weather-data
 
 Import sample data:
 ```
-curl -XPOST 'http://localhost:9200/weather_data/_bulk' --data-binary @weather-deaths.json
+curl -XPOST 'http://localhost:9200/weather_data/_bulk' --data-binary @data/weather-deaths.json
 ```
 
 Sum bucket aggregation.

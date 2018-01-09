@@ -80,7 +80,7 @@ Sorting by GEO distance:
    },
    "sort": [
      {
-"_geo_distance": {
+       "_geo_distance": {
          "location": {
            "lat": "37.348929",
            "lon": "-121.888536"

@@ -12,10 +12,23 @@ UPDATE - 17th March 2017
 This version has been adapted to use the new Painless scripting language and has been 
 tested with elasticsearch version 5.2.2
 
+Install Python dependencies:
+============================
+```
+pip install elasticsearch
+```
+
 Loading the data, building entities
 ====================================
 1) Run the script "loadEvent.sh". This will drop then create the "anonreviews" index
 2) Install the "ReviewerProfileUpdater.painless" file in the $ES_HOME/config/scripts directory
+To install it with the docker container:
+```
+docker exec -it dockerelk_elasticsearch_1 /bin/bash
+cd /usr/share/elasticsearch/config/scripts
+vi ReviewerProfileUpdater.painless
+```
+
 3) Run the script "buildEntities.sh" to pull the reviews sorted by reviewerId and time from
 the "anonreviews" index and it will create "reviewer" documents in a "reviewers" index.
 
