@@ -275,8 +275,10 @@ POST imdb/default/_search
 ## Search
 
 ```
-POST imdb/default/_search?explain
+POST imdb/default/_search
 {
+  "_source": "originalTitle", 
+  "explain": true,
   "query": {
     "match": {
       "actors": "Leonardo DiCaprio"
