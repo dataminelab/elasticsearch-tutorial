@@ -244,18 +244,6 @@ PUT hotels/
 # Reimport the bulk data
 ```
 
-## Testing _all field
-```
-GET hotels/default/_search
-{
-  "query": {
-    "match": {
-      "_all": "Seoul"
-    }
-  }
-}
-```
-
 ## Disable dynamic mappings
 
 ```
