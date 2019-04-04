@@ -48,8 +48,8 @@ GET /blogs/default/_search
 }
 ```
 
-
 ## Task: Fuzzy search
+
 
 * Find blogs with titles containing word "undersstanding"
 * Assume user did the mistake typing the keyword
@@ -100,6 +100,20 @@ GET my_index/_search
         }
       }
     }
+  }
+}
+
+Also, consider this:
+
+GET my_index/_search
+{
+  "query": {
+        "bool": {
+          "must": [
+            { "match": { "user.first": "Alice" }},
+            { "match": { "user.last":  "White" }} 
+          ]
+      }
   }
 }
 ```
