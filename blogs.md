@@ -48,6 +48,7 @@ GET /blogs/default/_search
 }
 ```
 
+
 ## Task: Fuzzy search
 
 * Find blogs with titles containing word "undersstanding"
