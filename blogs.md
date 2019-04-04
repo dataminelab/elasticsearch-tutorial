@@ -55,7 +55,8 @@ GET /blogs/default/_search
 * Assume user did the mistake typing the keyword
 * Return only the title and add highligting to it
 
-First see this example:
+## Nested sets
+
 ```
 PUT my_index
 {
