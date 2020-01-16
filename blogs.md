@@ -40,8 +40,8 @@ GET /blogs/default/_search
     "query": {
         "match_phrase" : {
             "content.rendered" : {
-                "query" : "user experience",
-                "slop" : 1
+                "query" : "extract book",
+                "slop" : 2
             }
         }
     }
